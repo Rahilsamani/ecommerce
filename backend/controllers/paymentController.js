@@ -32,7 +32,7 @@ exports.processPayment = asyncErrorHandler(async (req, res, next) => {
 });
 
 // Razorpay Callback
-exports.razorpayResponse = asyncErrorHandler(async (req, res, next) => {
+exports.paytmResponse = asyncErrorHandler(async (req, res, next) => {
   const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
     req.body;
 
