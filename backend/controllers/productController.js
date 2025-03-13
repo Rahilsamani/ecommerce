@@ -3,6 +3,7 @@ const asyncErrorHandler = require("../middlewares/asyncErrorHandler");
 const SearchFeatures = require("../utils/searchFeatures");
 const ErrorHandler = require("../utils/errorHandler");
 const cloudinary = require("cloudinary");
+const correctSpelling = require("../utils/gemini");
 
 // Get All Products
 exports.getAllProducts = asyncErrorHandler(async (req, res, next) => {
@@ -307,4 +308,28 @@ exports.deleteReview = asyncErrorHandler(async (req, res, next) => {
   res.status(200).json({
     success: true,
   });
+});
+
+exports.checkAvailability = asyncErrorHandler(async (req, res, next) => {
+  try {
+    let { items } = req.body;
+
+    items = await correctSpelling(items);
+    console.log("Corrected Items:", items);
+
+    const availableProducts = await Product.find({ name: { $in: items } });
+
+    const unavailableItems = items.filter(
+      (item) => !availableProducts.some((product) => product.name === item)
+    );
+
+    const alternatives = await Product.find({
+      category: { $in: unavailableItems.map((item) => item.category) },
+    });
+
+    res.json({ availableProducts, alternatives });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
 });
