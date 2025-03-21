@@ -13,6 +13,7 @@
   "author": "Rahil Ahmed Samani",
   "license": "ISC",
   "dependencies": {
+    "@google/generative-ai": "^0.24.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.1",
     "cloudinary": "^1.28.1",
