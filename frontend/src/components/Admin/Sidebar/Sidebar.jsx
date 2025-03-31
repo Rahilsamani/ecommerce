@@ -118,7 +118,7 @@ const Sidebar = ({ activeTab, setToggleSidebar }) => {
         <h5>Developed with ❤️ by:</h5>
         <div className="flex flex-col gap-0">
           <a
-            href="https://www.linkedin.com/in/jigar-sable"
+            href="https://www.linkedin.com/in/rahil-ahmed-samani"
             target="_blank"
             rel="noreferrer"
             className="font-medium text-lg hover:text-blue-500"
@@ -126,10 +126,10 @@ const Sidebar = ({ activeTab, setToggleSidebar }) => {
             Rahil Ahmed Samani
           </a>
           <a
-            href="mailto:jigarsable21@gmail.com"
+            href="mailto:rahilahmedsamani@gmail.com"
             className="text-gray-300 text-sm hover:text-blue-500"
           >
-            jigarsable21@gmail.com
+            rahilahmedsamani@gmail.com
           </a>
         </div>
       </div>
